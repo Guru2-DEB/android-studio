@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        val headerBar = findViewById<LinearLayout>(R.id.headerBar)
+
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
         bottomNavBar.setOnItemSelectedListener  {
             val selectedFragment: Fragment = when (it.itemId){
