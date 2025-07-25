@@ -6,9 +6,39 @@
     tools:context=".StudySummaryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#222"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#28292D">
+            <TextView
+                android:id="@+id/toDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="날짜"
+                android:textSize="35sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginVertical="15dp"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/summaryText"
+                android:text="내용"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginBottom="50dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
