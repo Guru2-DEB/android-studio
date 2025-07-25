@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="12dp">
+
+    <!-- 상단 히스토리 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#28292D"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <!-- 왼쪽: 타이틀 + 날짜 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/historyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- 날짜 영역 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/calendarIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/history_calendar" />
+
+                <TextView
+                    android:id="@+id/historyDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#CCCCCC"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 오른쪽: Summary 버튼 -->
+        <Button
+            android:id="@+id/summaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="80dp"
+            android:backgroundTint="#9E26F3"
+            android:textColor="#FFFFFF"
+            android:text="Summary"
+            android:layout_marginStart="12dp"
+            android:paddingHorizontal="20dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- 채팅 내용 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:paddingBottom="8dp" />
+</LinearLayout>

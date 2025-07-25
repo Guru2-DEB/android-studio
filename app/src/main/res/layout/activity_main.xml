@@ -1,25 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/headerBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="#1C1C1E"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:contentDescription="Logo"
+            android:src="@drawable/headerbar_logo" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/mainContainer"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:ignore="Suspicious0dp" />
+        android:layout_height="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomNavigationBar"
-        app:menu="@menu/main_menu_navbar"/>
-
+        app:menu="@menu/main_menu_navbar"
+        android:background="#1C1C1E"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white" />
 
 </LinearLayout>

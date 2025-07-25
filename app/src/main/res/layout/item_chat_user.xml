@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/userMessageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="280dp"
+        android:background="@drawable/chat_user_bubble"
+        android:padding="16dp"
+        android:textColor="#FFFFFF" />
+</LinearLayout>
