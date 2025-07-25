@@ -12,8 +12,4 @@ tools:context=".StudyNewDetailFragment">
   android:background="#1E1F23"
   android:text="home page" />
 
-<WebView
-  android:layout_width="match_parent"
-  android:layout_height="511dp" />
-
 </FrameLayout>
