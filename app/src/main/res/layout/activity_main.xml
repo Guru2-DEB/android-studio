@@ -20,11 +20,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottomNavigationBar"
         app:menu="@menu/main_menu_navbar"
-        android:background="#222"
-        app:itemTextColor="@color/bottom_nav_selector"
-        app:itemIconTint="@color/bottom_nav_selector"
-        app:itemBackground="@android:color/transparent"
-        app:itemRippleColor="@android:color/transparent"/>
+        android:background="#222"/>
 
 
 </LinearLayout>
