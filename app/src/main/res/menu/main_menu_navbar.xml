@@ -8,10 +8,12 @@
 
     <item
         android:id="@+id/Study"
+        android:icon="@drawable/famicons_create"
         android:title="Study"/>
 
     <item
         android:id="@+id/History"
+        android:icon="@drawable/fluent_chat_history"
         android:title="History"/>
 
 

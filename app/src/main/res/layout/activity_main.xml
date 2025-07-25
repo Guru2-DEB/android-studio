@@ -34,8 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/main_menu_navbar"
-        android:background="#1C1C1E"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white" />
+        android:background="#222"
+        app:itemTextColor="@color/bottom_nav_selector"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemBackground="@android:color/transparent"
+        app:itemRippleColor="@android:color/transparent"/>
 
 </LinearLayout>
