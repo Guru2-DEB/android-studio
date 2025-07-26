@@ -17,18 +17,23 @@ class MainActivity : AppCompatActivity() {
 
 //        val headerBar = findViewById<LinearLayout>(R.id.headerBar)
 
-        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavBar.setOnItemSelectedListener  {
-            val selectedFragment: Fragment = when (it.itemId){
-                R.id.Home -> homeFragment
-                R.id.Study -> studyNewListFragment
-                R.id.History -> historyFragment
-                else -> homeFragment
-            }
+        // 프래그먼트 단독 실행 (테스트용)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, StudyAiChatFragment())
+            .commit()
 
-            supportFragmentManager.beginTransaction().replace(R.id.mainContainer, selectedFragment).commit()
-            true
-        }
+//        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
+//        bottomNavBar.setOnItemSelectedListener  {
+//            val selectedFragment: Fragment = when (it.itemId){
+//                R.id.Home -> homeFragment
+//                R.id.Study -> studyNewListFragment
+//                R.id.History -> historyFragment
+//                else -> homeFragment
+//            }
+//
+//            supportFragmentManager.beginTransaction().replace(R.id.mainContainer, selectedFragment).commit()
+//            true
+//        }
 
     }
 }
