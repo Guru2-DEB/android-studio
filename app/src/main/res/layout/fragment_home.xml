@@ -1,13 +1,145 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="#1E1F23"
-  android:orientation="vertical"
-  tools:context=".HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1F23"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
 
-  <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/Record"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:background="#28292D"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/RexTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sansationregular"
+            android:text="Record"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginVertical="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:background="@drawable/rounded_bg"
+                android:layout_marginRight="20dp"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sansationregular"
+                    android:text="Total"
+                    android:textAlignment="center"
+                    android:textColor="#Ffffff"
+                    android:textSize="16sp"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:id="@+id/TotalNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:fontFamily="@font/sansationregular"
+                    android:textColor="#9E26F3"
+                    android:textSize="32sp"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sansationregular"
+                android:text=" Today's Progress"
+                android:textAlignment="center"
+                android:textColor="#Ffffff"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/TodoProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not done"
+                android:fontFamily="@font/sansationregular"
+                android:textColor="#9E26F3"
+                android:textSize="20sp"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+      </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#28292D"
+        android:orientation="vertical"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/NewTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:fontFamily="@font/sansationregular"
+            android:inputType="text"
+            android:text="Recommand News"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:background="@drawable/rounded_bg"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/RecommandNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="01">
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/NewNewsBtn"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:background="#9E26F3"
+                android:fontFamily="@font/sansationregular"
+                android:text="News Detail"
+                android:textSize="24sp"
+                android:layout_marginVertical="20dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+  <!--<androidx.cardview.widget.CardView
     android:id="@+id/Record"
     android:layout_width="match_parent"
     android:layout_height="184dp"
@@ -24,8 +156,7 @@
       android:textAlignment="center"
       android:textColor="#FFFFFF"
       android:textSize="34sp" />
-
-    <View
+      <View
       android:id="@+id/view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" />
@@ -112,5 +243,5 @@
       android:text="News Detail"
       android:textSize="24sp" />
 
-  </androidx.cardview.widget.CardView>
+  </androidx.cardview.widget.CardView>-->
 </LinearLayout>
