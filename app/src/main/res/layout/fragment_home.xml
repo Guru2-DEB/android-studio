@@ -75,71 +75,42 @@
   <androidx.cardview.widget.CardView
     android:id="@+id/NewNews"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="323dp"
     app:cardBackgroundColor="#28292D"
-    app:cardElevation="2dp"
-    android:padding="16dp">
+    app:cardElevation="2dp">
 
-    <LinearLayout
+    <ImageView
+      android:id="@+id/NewNewsSq"
+      android:layout_width="357dp"
+      android:layout_height="190dp"
+
+      android:layout_marginLeft="44dp"
+      android:layout_marginTop="110dp"
+      android:src="@drawable/rounded_bg" />
+
+    <TextView
+      android:id="@+id/NewTxt"
       android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginTop="40dp"
+      android:ems="10"
+      android:fontFamily="@font/sansationregular"
+      android:inputType="text"
+      android:text="Recommand News"
+      android:textAlignment="center"
+      android:textColor="#ffffff"
+      android:textSize="34sp" />
+
+    <Button
+      android:id="@+id/NewNewsBtn"
+      android:layout_width="245dp"
       android:layout_height="wrap_content"
-      android:orientation="vertical">
+      android:layout_marginLeft="100dp"
+      android:layout_marginTop="235dp"
+      android:background="#9E26F3"
+      android:fontFamily="@font/sansationregular"
+      android:text="News Detail"
+      android:textSize="24sp" />
 
-      <!-- 제목 -->
-      <TextView
-        android:id="@+id/NewTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sansationregular"
-        android:text="Recommand News"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="34sp"
-        android:layout_marginBottom="16dp" />
-
-      <!-- 뉴스 내용 -->
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_bg"
-        android:padding="12dp">
-
-        <TextView
-          android:id="@+id/latestNewsTitle"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="최신 뉴스 제목"
-          android:textColor="#FFFFFF"
-          android:textSize="18sp"
-          android:textStyle="bold"
-          android:textAlignment="center"
-          android:fontFamily="@font/sansationregular" />
-
-        <TextView
-          android:id="@+id/latestNewsDescription"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="뉴스 설명이 여기에 표시됩니다."
-          android:textColor="#DDDDDD"
-          android:textSize="14sp"
-          android:textAlignment="center"
-          android:fontFamily="@font/sansationregular"
-          android:maxLines="2"
-          android:ellipsize="end"
-          android:layout_marginTop="4dp" />
-      </LinearLayout>
-
-      <!-- 버튼 -->
-      <Button
-        android:id="@+id/NewNewsBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#9E26F3"
-        android:fontFamily="@font/sansationregular"
-        android:text="News Detail"
-        android:textSize="24sp" />
-    </LinearLayout>
   </androidx.cardview.widget.CardView>
 </LinearLayout>
