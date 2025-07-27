@@ -16,27 +16,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val headerBar = findViewById<LinearLayout>(R.id.headerBar)
-
-        // 프래그먼트 단독 실행 (테스트용)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, StudyAiChatFragment())
-            .commit()
-
-        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
-        bottomNavBar.setOnItemSelectedListener  {
-            val selectedFragment: Fragment = when (it.itemId){
-                R.id.Home -> homeFragment
-                R.id.Study -> studyNewListFragment
-                R.id.History -> historyFragment
-                else -> homeFragment
-            }
-
-            supportFragmentManager.beginTransaction().replace(R.id.mainContainer, selectedFragment).commit()
-            true
+        // 1) 앱 시작 시 HomeFragment 보여주기 (최초 한 번만)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.mainContainer, homeFragment)
+                .commit()
         }
 
-        bottomNavBar.selectedItemId = R.id.Home
+        // 2) BottomNavigation 세팅
+        findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
+            .setOnItemSelectedListener { menuItem ->
+                val selected = when (menuItem.itemId) {
+                    R.id.Home    -> homeFragment
+                    R.id.Study   -> studyNewListFragment
+                    R.id.History -> historyFragment
+                    else         -> homeFragment
+                }
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainContainer, selected)
+                    .commit()
+                true
+            }
 
     }
 }
