@@ -1,59 +1,84 @@
 package com.example.deb
 
+import android.widget.Toast
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+  private val newsViewModel: NewsViewModel by activityViewModels()
+  private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+
+  private lateinit var titleView: TextView
+  private lateinit var descriptionView: TextView
+  private lateinit var newsBtn: Button
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    return inflater.inflate(R.layout.fragment_home, container, false)
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    titleView = view.findViewById(R.id.latestNewsTitle)
+    descriptionView = view.findViewById(R.id.latestNewsDescription)
+    newsBtn = view.findViewById(R.id.NewNewsBtn)
+
+    newsViewModel.newsList.observe(viewLifecycleOwner) { newsList ->
+      val sortedNews = newsList.sortedByDescending { news ->
+        try {
+          dateFormat.parse(news.pubDate)
+        } catch (e: Exception) {
+          null
         }
-    }
+      }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+      val latestNews = sortedNews.firstOrNull()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+      if (latestNews != null) {
+        titleView.text = latestNews.title
+        descriptionView.text = latestNews.description
+
+        titleView.setOnClickListener {
+          val detailFragment = StudyNewDetailFragment.newInstance(latestNews.link)
+          requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, detailFragment)
+            .addToBackStack(null)
+            .commit()
+        }
+
+        newsBtn.setOnClickListener {
+          val detailFragment = StudyNewDetailFragment.newInstance(latestNews.link)
+          requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, detailFragment)
+            .addToBackStack(null)
+            .commit()
+        }
+
+      } else {
+        titleView.text = "최신 뉴스가 없습니다."
+        descriptionView.text = " "
+
+        titleView.setOnClickListener {
+          Toast.makeText(requireContext(), "뉴스를 기다려 주세요", Toast.LENGTH_SHORT).show()
+        }
+
+        newsBtn.setOnClickListener {
+          Toast.makeText(requireContext(), "뉴스를 기다려 주세요", Toast.LENGTH_SHORT).show()
+        }
+      }
     }
+  }
 }
