@@ -1,140 +1,145 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#1E1F23"
+  android:orientation="vertical"
+  tools:context=".HomeFragment">
+
+  <androidx.cardview.widget.CardView
+    android:id="@+id/Record"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#1E1F23"
-    android:orientation="vertical"
-    tools:context=".HomeFragment">
+    android:layout_height="184dp"
+    android:layout_marginBottom="20dp"
+    app:cardBackgroundColor="#28292D" >
+
+    <TextView
+      android:id="@+id/RexTxt"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/sansationregular"
+      android:text="Record"
+      android:layout_marginTop="35dp"
+      android:textAlignment="center"
+      android:textColor="#FFFFFF"
+      android:textSize="34sp" />
+
+    <View
+      android:id="@+id/view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+
+    <ImageView
+      android:id="@+id/Total"
+      android:layout_width="135dp"
+      android:layout_height="61dp"
+      android:layout_marginLeft="45dp"
+      android:layout_marginTop="100dp"
+      android:src="@drawable/rounded_bg" />
+
+    <TextView
+      android:id="@+id/textView3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="60dp"
+      android:layout_marginTop="120dp"
+      android:fontFamily="@font/sansationregular"
+      android:text="Total"
+      android:textAlignment="center"
+      android:textColor="#Ffffff"
+      android:textSize="16sp" />
+
+    <ImageView
+      android:id="@+id/Todo"
+      android:layout_width="206dp"
+      android:layout_height="61dp"
+      android:layout_marginLeft="201dp"
+      android:layout_marginTop="100dp"
+      android:src="@drawable/rounded_bg" />
+
+    <TextView
+      android:id="@+id/textView2"
+      android:layout_width="77dp"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="225dp"
+      android:layout_marginTop="112dp"
+      android:fontFamily="@font/sansationregular"
+      android:text=" Today's Progress"
+      android:textAlignment="center"
+      android:textColor="#Ffffff"
+      android:textSize="16sp" />
+
+  </androidx.cardview.widget.CardView>
+
+  <androidx.cardview.widget.CardView
+    android:id="@+id/NewNews"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#28292D"
+    app:cardElevation="2dp"
+    android:padding="16dp">
 
     <LinearLayout
-        android:id="@+id/Record"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <!-- 제목 -->
+      <TextView
+        android:id="@+id/NewTxt"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:background="#28292D"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sansationregular"
+        android:text="Recommand News"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="34sp"
+        android:layout_marginBottom="16dp" />
+
+      <!-- 뉴스 내용 -->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="1"
-        android:gravity="center_vertical">
+        android:background="@drawable/rounded_bg"
+        android:padding="12dp">
 
         <TextView
-            android:id="@+id/RexTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sansationregular"
-            android:text="Record"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"/>
+          android:id="@+id/latestNewsTitle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="최신 뉴스 제목"
+          android:textColor="#FFFFFF"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          android:textAlignment="center"
+          android:fontFamily="@font/sansationregular" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginVertical="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:background="@drawable/rounded_bg"
-                android:layout_marginRight="20dp"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sansationregular"
-                    android:text="Total"
-                    android:textAlignment="center"
-                    android:textColor="#Ffffff"
-                    android:textSize="16sp"
-                    android:layout_marginRight="10dp"/>
-                <TextView
-                    android:id="@+id/TotalNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="8"
-                    android:fontFamily="@font/sansationregular"
-                    android:textColor="#9E26F3"
-                    android:textSize="32sp"
-                    android:layout_margin="10dp"/>
-            </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_bg"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="77dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sansationregular"
-                android:text=" Today's Progress"
-                android:textAlignment="center"
-                android:textColor="#Ffffff"
-                android:textSize="13sp" />
-            <TextView
-                android:id="@+id/TodoProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not done"
-                android:fontFamily="@font/sansationregular"
-                android:textColor="#9E26F3"
-                android:textSize="20sp"
-                android:layout_margin="10dp"/>
-        </LinearLayout>
+        <TextView
+          android:id="@+id/latestNewsDescription"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="뉴스 설명이 여기에 표시됩니다."
+          android:textColor="#DDDDDD"
+          android:textSize="14sp"
+          android:textAlignment="center"
+          android:fontFamily="@font/sansationregular"
+          android:maxLines="2"
+          android:ellipsize="end"
+          android:layout_marginTop="4dp" />
       </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
+      <!-- 버튼 -->
+      <Button
+        android:id="@+id/NewNewsBtn"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#28292D"
-        android:orientation="vertical"
-        android:layout_weight="2">
-        <TextView
-            android:id="@+id/NewTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:fontFamily="@font/sansationregular"
-            android:inputType="text"
-            android:text="Recommand News"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="30sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            android:background="@drawable/rounded_bg"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp"
-            android:gravity="center"
-            android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/RecommandNews"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="10dp"
-                android:layout_weight="01">
-
-            </LinearLayout>
-            <Button
-                android:id="@+id/NewNewsBtn"
-                android:layout_width="245dp"
-                android:layout_height="wrap_content"
-                android:background="#9E26F3"
-                android:fontFamily="@font/sansationregular"
-                android:text="News Detail"
-                android:textSize="24sp"
-                android:layout_marginVertical="20dp"/>
-        </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#9E26F3"
+        android:fontFamily="@font/sansationregular"
+        android:text="News Detail"
+        android:textSize="24sp" />
     </LinearLayout>
+  </androidx.cardview.widget.CardView>
 </LinearLayout>
