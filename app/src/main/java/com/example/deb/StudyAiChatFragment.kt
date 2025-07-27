@@ -16,6 +16,13 @@ import retrofit2.Response
 
 class StudyAiChatFragment : Fragment() {
 
+    companion object {
+        private const val ARG_NEWS_CONTENT = "news_content"
+        fun newInstance(newsContent: String) = StudyAiChatFragment().apply {
+            arguments = Bundle().apply { putString(ARG_NEWS_CONTENT, newsContent) }
+        }
+    }
+
     private lateinit var chatAdapter: ChatAdapter
     private val chatMessages = mutableListOf<ChatMessage>()
 
@@ -37,24 +44,35 @@ class StudyAiChatFragment : Fragment() {
         val editText = view.findViewById<EditText>(R.id.messageEditText)
         val sendButton = view.findViewById<ImageButton>(R.id.sendButton)
 
-        // 1) 예시 뉴스 한 번만 전송
-        sendNewsToDeBil(
-            "2025년 7월 25일, 국내 대형 온라인 쇼핑몰인 EZShop이 해킹 공격을 받아 " +
-                    "고객 개인정보 20만 건이 유출되었습니다. 공격자는 제로데이 취약점을 이용해 " +
-                    "오래된 시스템에 침투했으며, SQL 인젝션 및 피싱 이메일을 동시 사용했습니다. " +
-                    "현재 EZShop은 보안 패치를 적용하고 사고 수습에 나선 상태입니다."
-        )
+        // 전달된 뉴스 컨텐츠(URL or 본문)
+        val newsContent = arguments?.getString(ARG_NEWS_CONTENT)
+            ?: "뉴스 내용이 없습니다."
+
+        // 프론트 채팅창에 AI 요청 (자동 시작)
+        sendNewsToDeBil(newsContent)
 
         // 2) 사용자가 입력한 답변을 서버로 전송
         sendButton.setOnClickListener {
-            val userInput = editText.text.toString().trim()
-            if (userInput.isNotEmpty()) {
-                // 2-1) 사용자 메시지 표시
-                addMessage(userInput, isUser = true)
+            val fullInput = editText.text.toString().trim()
+            if (fullInput.isNotEmpty()) {
+                // 1) 사용자 메시지 표시
+                addMessage(fullInput, isUser = true)
                 editText.setText("")
 
-                // 2-2) AI 평가 요청 (여기서는 예시 핵심 용어를 '제로데이'로 고정)
-                sendAnswerToDeBil(userInput, coreTerm = "제로데이")
+                // 2) “용어: 설명” 으로 분리
+                val parts = fullInput.split(":", limit = 2)
+                if (parts.size == 2) {
+                    val coreTerm   = parts[0].trim()
+                    val userAnswer = parts[1].trim()
+                    // 평가 요청
+                    sendAnswerToDeBil(userAnswer, coreTerm)
+                } else {
+                    // 형식이 잘못됐으면 안내 메시지
+                    addMessage(
+                        "⚠️ 답변은 ‘용어: 설명’ 형식으로 입력해주세요.\n예) 제로데이: 패치 안된 취약점을 공격하는 기법",
+                        isUser = false
+                    )
+                }
             }
         }
     }
