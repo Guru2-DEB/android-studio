@@ -36,6 +36,18 @@ class HomeFragment : Fragment() {
     descriptionView = view.findViewById(R.id.latestNewsDescription)
     newsBtn = view.findViewById(R.id.NewNewsBtn)
 
+    // 앱 시작 시 뉴스 자동 요청
+    NewsRepository.fetchNews(
+      context = requireContext(),
+      onSuccess = { fetchedNews ->
+        newsViewModel.setNews(fetchedNews)
+      },
+      onFailure = {
+        Toast.makeText(requireContext(), "뉴스를 불러오는 데 실패했어요.", Toast.LENGTH_SHORT).show()
+      }
+    )
+
+    // 옵저버는 그대로 유지
     newsViewModel.newsList.observe(viewLifecycleOwner) { newsList ->
       val sortedNews = newsList.sortedByDescending { news ->
         try {
@@ -51,7 +63,7 @@ class HomeFragment : Fragment() {
         titleView.text = latestNews.title
         descriptionView.text = latestNews.description
 
-        titleView.setOnClickListener {
+        val openDetail = {
           val detailFragment = StudyNewDetailFragment.newInstance(latestNews.link)
           requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.mainContainer, detailFragment)
@@ -59,25 +71,19 @@ class HomeFragment : Fragment() {
             .commit()
         }
 
-        newsBtn.setOnClickListener {
-          val detailFragment = StudyNewDetailFragment.newInstance(latestNews.link)
-          requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, detailFragment)
-            .addToBackStack(null)
-            .commit()
-        }
+        titleView.setOnClickListener { openDetail() }
+        newsBtn.setOnClickListener { openDetail() }
 
       } else {
         titleView.text = "최신 뉴스가 없습니다."
         descriptionView.text = " "
 
-        titleView.setOnClickListener {
+        val showToast = {
           Toast.makeText(requireContext(), "뉴스를 기다려 주세요", Toast.LENGTH_SHORT).show()
         }
 
-        newsBtn.setOnClickListener {
-          Toast.makeText(requireContext(), "뉴스를 기다려 주세요", Toast.LENGTH_SHORT).show()
-        }
+        titleView.setOnClickListener { showToast() }
+        newsBtn.setOnClickListener { showToast() }
       }
     }
   }
