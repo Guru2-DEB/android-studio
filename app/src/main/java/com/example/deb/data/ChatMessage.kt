@@ -1,4 +1,4 @@
-package com.example.deb
+package com.example.deb.data
 
 //프론트 UI용 메시지 모델 (RecyclerView에서 사용자/AI 메시지를 구분하는 데 사용)
 data class ChatMessage(

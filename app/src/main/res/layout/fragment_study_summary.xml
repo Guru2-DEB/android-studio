@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/summaryRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudySummaryFragment">
+    android:background="#222"
+    android:padding="12dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <!-- 1) 상단: 날짜 -->
+    <TextView
+        android:id="@+id/toDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2025.07.28"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- 2) 로딩 인디케이터 -->
+    <ProgressBar
+        android:id="@+id/summaryProgress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <!-- 3) 요약 텍스트 (로딩 끝나면 보여 줍니다) -->
+    <ScrollView
+        android:id="@+id/summaryScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#222"
-        tools:ignore="UselessParent">
+        android:layout_marginTop="48dp"
+        android:visibility="gone">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/summaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#28292D">
-            <TextView
-                android:id="@+id/toDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="날짜"
-                android:textSize="35sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginHorizontal="35dp"
-                android:layout_marginVertical="15dp"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/summaryText"
-                android:text="내용"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginHorizontal="35dp"
-                android:layout_marginBottom="50dp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+            android:text="요약 내용이 여기에 표시됩니다."
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="16dp"/>
 
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

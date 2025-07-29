@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/deb/StudyNewListFragment.kt
 package com.example.deb
 
 import android.os.Bundle
@@ -26,8 +27,14 @@ class StudyNewListFragment : Fragment() {
     val view = inflater.inflate(R.layout.fragment_study_new_list, container, false)
     recyclerView = view.findViewById(R.id.recyclerView)
     recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
     adapter = NewsAdapter(newsList) { selectedNews ->
-      val detailFragment = StudyNewDetailFragment.newInstance(selectedNews.link)
+      // newInstance 호출 시 세 개 인자 모두 넘겨 줍니다
+      val detailFragment = StudyNewDetailFragment.newInstance(
+        title   = selectedNews.title,
+        content = selectedNews.description,
+        url     = selectedNews.link
+      )
       requireActivity().supportFragmentManager.beginTransaction()
         .replace(R.id.mainContainer, detailFragment)
         .addToBackStack(null)

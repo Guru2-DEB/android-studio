@@ -1,4 +1,4 @@
-package com.example.deb
+package com.example.deb.data
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
