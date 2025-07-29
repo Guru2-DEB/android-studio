@@ -3,8 +3,11 @@
     <style name="Base.Theme.DEB" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <!--<item name="android:windowBackground">@drawable/splash_start_background</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowBackground">@drawable/splash_start_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:ignore="NewApi">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.DEB" parent="Base.Theme.DEB" />
+    <style name="Theme.DEB" parent="Base.Theme.DEB">
+    </style>
 </resources>
