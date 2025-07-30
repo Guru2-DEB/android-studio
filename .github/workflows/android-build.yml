@@ -21,7 +21,7 @@ jobs:
           java-version: '17'
 
       - name: Build Debug APK
-        working-directory: android-studio      # ← 수정된 경로
+        working-directory: ./      # ← 수정된 경로
         run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload Debug APK

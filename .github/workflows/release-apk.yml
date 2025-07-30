@@ -21,7 +21,7 @@ jobs:
 
       # 2) Build Release APK
       - name: Build Release APK
-        working-directory: android-studio      # ← 수정된 경로
+        working-directory: ./      # ← 수정된 경로
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS:       ${{ secrets.ANDROID_KEY_ALIAS }}
