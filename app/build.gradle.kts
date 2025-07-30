@@ -1,5 +1,6 @@
 import java.util.Properties
 import java.io.FileInputStream
+import java.io.File
 
 plugins {
     alias(libs.plugins.android.application)
@@ -7,8 +8,6 @@ plugins {
 
     // Room @Entity/@Dao 어노테이션 프로세싱 활성화를 위한 KAPT
     id("org.jetbrains.kotlin.kapt")
-    // 또는, 버전 카탈로그에 정의돼 있으면:
-    // alias(libs.plugins.kotlin.kapt)
 }
 
 val localProperties = Properties().apply {
@@ -34,12 +33,17 @@ android {
         val clientId = System.getenv("NAVER_CLIENT_ID") ?: localProperties.getProperty("NAVER_CLIENT_ID", "")
         val clientSecret = System.getenv("NAVER_CLIENT_SECRET") ?: localProperties.getProperty("NAVER_CLIENT_SECRET", "")
 
-        buildConfigField("String", "NAVER_CLIENT_ID",     "\"$clientId\"")
+        buildConfigField("String", "NAVER_CLIENT_ID", "\"$clientId\"")
         buildConfigField("String", "NAVER_CLIENT_SECRET", "\"$clientSecret\"")
     }
 
-    buildFeatures {
-        buildConfig = true
+    signingConfigs {
+        create("release") {
+            storeFile = File(rootDir, "release-keystore.jks")
+            storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: ""
+            keyAlias = System.getenv("ANDROID_KEY_ALIAS") ?: ""
+            keyPassword = System.getenv("ANDROID_KEY_PASSWORD") ?: ""
+        }
     }
 
     buildTypes {
@@ -49,7 +53,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     compileOptions {
