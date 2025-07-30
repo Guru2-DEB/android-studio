@@ -12,7 +12,7 @@ object RetrofitClient {
     // OkHttpClient 에 충분한 타임아웃을 설정
     private val okHttp = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)  // 연결 시도 최대 30초
-        .readTimeout(120, TimeUnit.SECONDS)     // 응답 대기 최대 60초
+        .readTimeout(180, TimeUnit.SECONDS)     // 응답 대기 최대 60초
         .writeTimeout(120, TimeUnit.SECONDS)
         .build()
 
