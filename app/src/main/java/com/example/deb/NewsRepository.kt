@@ -12,6 +12,7 @@ import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 object NewsRepository {
 
   private val allowedDomains = listOf(
@@ -26,7 +27,7 @@ object NewsRepository {
     onFailure: (Exception) -> Unit
   ) {
     val url = "https://openapi.naver.com/v1/search/news.json"
-    val query = "기자"
+    val query = "보안"
 
     val apiDateFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH)
     val displayFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
