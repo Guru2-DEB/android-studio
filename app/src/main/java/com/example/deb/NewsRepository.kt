@@ -29,6 +29,7 @@ object NewsRepository {
     val url = "https://openapi.naver.com/v1/search/news.json"
     //검색 기반 단어 선정. 도메인 필터가 불가해짐에 따라 특정 단어를 조합하여 섬색어 지정
     val query = "암호|해킹|정보보호|보안|취약점|랜섬웨어|DDoS|정보|사이버|인증" //모든 뉴스를 확인 하는 경우: 기자로 키워드 변경.
+    //val query = "정보보호|보안|취약점|암호"
 
     val apiDateFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH)
     val displayFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
