@@ -15,7 +15,7 @@ import java.util.*
 
 object NewsRepository {
 
-  private val allowedDomains = listOf(
+  private val allowedDomains = listOf( //뉴스 api의 제한으로 도메인 기반 신문사 분리 제거.
     "itworld.co.kr",
     "heraldcorp.com",
     "dailysecu.com"
@@ -54,10 +54,10 @@ object NewsRepository {
               val localPubDateStr = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pubDate)
               val domain = URI(link).host?.replace("www.", "") ?: ""
 
-              // val isToday = localPubDateStr == todayStr
+              val isToday = localPubDateStr == todayStr
               // val isAllowedDomain = allowedDomains.any { domain.endsWith(it) }
 
-              // if (isToday && isAllowedDomain) {
+              if (isToday) {
               val title = Html.fromHtml(item.optString("title"), Html.FROM_HTML_MODE_LEGACY).toString()
               val description = Html.fromHtml(item.optString("description"), Html.FROM_HTML_MODE_LEGACY).toString()
 
@@ -69,7 +69,7 @@ object NewsRepository {
                   link = link
                 )
               )
-              // }
+               }
             }
           } catch (e: Exception) {
             Log.e("DATE_PARSE_ERROR", "날짜 파싱 실패: $pubDateStr", e)
