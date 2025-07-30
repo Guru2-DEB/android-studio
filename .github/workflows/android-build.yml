@@ -18,6 +18,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Create dummy local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
       - name: Grant permission to gradlew
         run: chmod +x ./gradlew
 
