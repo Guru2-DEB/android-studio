@@ -12,7 +12,10 @@ plugins {
 }
 
 val localProperties = Properties().apply {
-    load(File(rootDir, "local.properties").inputStream())
+    val file = File(rootDir, "local.properties")
+    if (file.exists()) {
+        load(file.inputStream())
+    }
 }
 
 android {
@@ -28,8 +31,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val clientId     = localProperties["NAVER_CLIENT_ID"] as String
-        val clientSecret = localProperties["NAVER_CLIENT_SECRET"] as String
+        val clientId = System.getenv("NAVER_CLIENT_ID") ?: localProperties.getProperty("NAVER_CLIENT_ID", "")
+        val clientSecret = System.getenv("NAVER_CLIENT_SECRET") ?: localProperties.getProperty("NAVER_CLIENT_SECRET", "")
 
         buildConfigField("String", "NAVER_CLIENT_ID",     "\"$clientId\"")
         buildConfigField("String", "NAVER_CLIENT_SECRET", "\"$clientSecret\"")
